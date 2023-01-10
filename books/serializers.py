@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from books.models import Author, Book, BookGenre, GENDER_CHOICES
+from books.models import Author, Book, BookGenre
 
 
 class AuthorSerializer(serializers.ModelSerializer):

@@ -3,22 +3,25 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
-# Gender
-GENDER_MALE = "MALE"
-GENDER_FEMALE = "FEMALE"
-GENDER_CHOICES = [
-    (GENDER_MALE, _("Male")),
-    (GENDER_FEMALE, _("Female")),
-]
+
+class GenderEnum(models.TextChoices):
+    MALE = 'MALE', _("Male")
+    FEMALE = 'FEMALE', _("Female")
 
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
-    gender = models.CharField(max_length=100, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=100, choices=GenderEnum.choices)
+
+    def __str__(self):
+        return self.name
 
 
 class BookGenre(models.Model):
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Book(models.Model):
@@ -27,3 +30,6 @@ class Book(models.Model):
         Author, related_name="books", on_delete=models.CASCADE)
     genre = models.ForeignKey(
         BookGenre, related_name="books", on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f"{self.title} by {self.author.name} ({self.genre})"
