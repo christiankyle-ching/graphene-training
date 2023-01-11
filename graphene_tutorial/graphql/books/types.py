@@ -27,7 +27,7 @@ class AuthorType(DjangoObjectType):
 class BookType(DjangoObjectType):
     class Meta:
         model = Book
-        fields = ('id', 'title', 'author', 'genre')
+        fields = ('id', 'title', 'author', 'genre', 'published_at')
 
 
 class BookGenreType(DjangoObjectType):

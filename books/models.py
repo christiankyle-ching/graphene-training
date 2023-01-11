@@ -30,6 +30,7 @@ class Book(models.Model):
         Author, related_name="books", on_delete=models.CASCADE)
     genre = models.ForeignKey(
         BookGenre, related_name="books", on_delete=models.SET_NULL, null=True)
+    published_at = models.DateTimeField(null=True)
 
     def __str__(self):
         return f"{self.title} by {self.author.name} ({self.genre})"
