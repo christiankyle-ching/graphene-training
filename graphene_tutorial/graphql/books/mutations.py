@@ -5,6 +5,7 @@ from graphene_tutorial.graphql.books.types import (AuthorType, BookType,
 
 from books.models import Author, Book
 
+
 """ Author Mutations """
 
 
@@ -60,7 +61,6 @@ class AddBook(graphene.Mutation):
         return AddBook(book=book)
 
 
-# Root Mutation, just like Query
 class Mutation(graphene.ObjectType):
     add_author = AddAuthor.Field()
     add_book = AddBook.Field()
