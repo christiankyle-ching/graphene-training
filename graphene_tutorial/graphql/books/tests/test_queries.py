@@ -38,8 +38,11 @@ def test_all_authors(client_query):
 
 # TestCase method using: https://www.hacksoft.io/blog/improve-your-tests-django-fakes-and-factories
 class BookCreateTest(unittest.TestCase):
+
+    @pytest.mark.django_db
     def setUp(self):
         self.book = BookFactory()
 
-    def test_book_create_sets_author(self, now_mock):
+    @pytest.mark.django_db
+    def test_book_create_sets_author(self):
         assert self.book.author.id is not None

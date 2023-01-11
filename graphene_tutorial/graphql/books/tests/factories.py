@@ -25,4 +25,4 @@ class BookFactory(factory.django.DjangoModelFactory):
 
     title = factory.LazyAttribute(lambda _: faker.name())
     author = factory.SubFactory(AuthorFactory)
-    name = factory.SubFactory(BookGenreFactory)
+    genre = factory.SubFactory(BookGenreFactory)
